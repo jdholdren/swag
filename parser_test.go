@@ -2177,9 +2177,9 @@ func TestParseTypeOverrides(t *testing.T) {
 
 	searchDir := "testdata/global_override"
 	p := New(SetOverrides(map[string]string{
-		"github.com/swaggo/swag/v2/testdata/global_override/types.Application":  "string",
-		"github.com/swaggo/swag/v2/testdata/global_override/types.Application2": "github.com/swaggo/swag/v2/testdata/global_override/othertypes.Application",
-		"github.com/swaggo/swag/v2/testdata/global_override/types.ShouldSkip":   "",
+		"github.com/jdholdren/swag/v2/testdata/global_override/types.Application":  "string",
+		"github.com/jdholdren/swag/v2/testdata/global_override/types.Application2": "github.com/jdholdren/swag/v2/testdata/global_override/othertypes.Application",
+		"github.com/jdholdren/swag/v2/testdata/global_override/types.ShouldSkip":   "",
 	}))
 	err := p.ParseAPI(searchDir, mainAPIFile, defaultParseDepth)
 	assert.NoError(t, err)
@@ -3395,14 +3395,14 @@ func TestParseFunctionScopedComplexStructDefinition(t *testing.T) {
 	src := `
 package main
 
-// @Param request body main.Fun.request true "query params" 
+// @Param request body main.Fun.request true "query params"
 // @Success 200 {object} main.Fun.response
 // @Router /test [post]
 func Fun()  {
 	type request struct {
 		Name string
 	}
-	
+
 	type grandChild struct {
 		Name string
 	}
@@ -3539,16 +3539,16 @@ package main
 
 type PublicChild struct {
 	Name string
-}	
+}
 
-// @Param request body main.Fun.request true "query params" 
+// @Param request body main.Fun.request true "query params"
 // @Success 200 {object} main.Fun.response
 // @Router /test [post]
 func Fun()  {
 	type request struct {
 		Name string
 	}
-	
+
 	type grandChild struct {
 		Name string
 	}
